@@ -23,6 +23,7 @@ An ai bot to make things easier
   <li>Send someone a message through whatsapp</li>
   <li>Send an email to someone</li>
   </ul>
+  
 ## How can you use this bot?
   The very first thing you would need is python itself
   Then you would need to go to your command prompt and install the following modules(Just copy and paste them)
