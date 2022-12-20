@@ -1,4 +1,4 @@
-def main():
+def main():  # I know main function isnt required in py
     import pyttsx3
     import speech_recognition as sr
     import datetime
@@ -7,6 +7,9 @@ def main():
     import time
     import requests
     import smtplib
+    import webbrowser
+    from google import google
+    import wikipedia
 
     engine = pyttsx3.init()
     engine.setProperty('rate', 150)
@@ -17,7 +20,7 @@ def main():
         engine.say(audio)
         engine.runAndWait()
 
-    speak("Hello I am Risul a bot made by Vishist, to begin please type your name")
+    speak("Hello I am Risul an AI powered virtual assistent, to get started, please type your name")
     user = input("type your name")
 
     def greet_user():
@@ -31,7 +34,6 @@ def main():
 
     def take_user_cmd():
         r = sr.Recognizer()
-        # input(print("CLICK ENTER TO START"))
         with sr.Microphone() as source:
             print("..........LISTENING...........")
             r.pause_threshold = 1
@@ -41,7 +43,7 @@ def main():
             query = r.recognize_google(audio, language='en-in')
             print(f"User said: {query}\n")
         except Exception:
-            print("Sorry, couldn't catch that please repeat")
+            print("Sorry, I didn't get that, I'd appricate if you could try again  ")
             query = "NONE"
         return query
 
@@ -53,89 +55,172 @@ def main():
             if True:
                 query = take_user_cmd().lower()
 
-                if "open notepad" in query:
-                    speak("opening notepad")
-                    run("notepad")
-                elif "open spotify" in query:
-                    speak("opening spotify")
-                    run("Spotify")
-                elif "open MS  word" in query:
-                    speak("opening word")
-                    run("word")
-                elif "open whatsapp" in query:
-                    speak("opening whatsapp")
-                    run("WhatsApp")
-                elif "open netflix" in query:
-                    speak("opening netflix")
-                    run("Netflix")
+                if "notepad" in query:
+                    try:
+                        speak("opening notepad")
+                        run("notepad")
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "spotify" in query:
+                    try:
+                        speak("opening spotify")
+                        run("Spotify")
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "word" in query:
+                    try:
+                        speak("opening word")
+                        run("word")
+                    except:
+                        speak("Unknown error occurred")                        
+
+                elif "whatsapp" in query:
+                    try:
+                        speak("opening whatsapp")
+                        run("WhatsApp")
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "netflix" in query:
+                    try:
+                        speak("opening netflix")
+                        run("Netflix")
+                    except:
+                        speak("Unknown error occurred")                      
+
+
                 elif "play on youtube" in query:
-                    speak("What do you want to play on youtube?")
-                    req = take_user_cmd().lower()
-                    kit.playonyt(req)
-                elif "search on google" in query:
-                    speak("What do you want to search sir?")
-                    req = take_user_cmd().lower()
-                    kit.search(req)
-                elif "what's the date" in query:
-                    speak(datetime.date.today())
-                elif "what's the time" in query:
-                    speak(time.strftime("%H:%M:%S", time.localtime()))
-                elif "open file explorer" in query:
-                    speak("opening file explorer")
-                    run("file explorer")
-                elif "open calculater" in query:
-                    speak("opening calculater")
-                    run("calculator")
-                elif "open camera" in query:
-                    speak("opening camera")
-                    run("camera")
-                elif "open settings" in query:
-                    speak("opening settings")
-                    run("settings")
-                elif "open vlc" in query:
-                    speak("opening vlc")
-                    run("vlc media player")
-                elif "open chrome" in query:
-                    speak("opening chrome")
-                    run("google chrome")
-                elif "send a message" in query:
-                    speak("sure, please type the number with the country code to whom I have to message")
-                    number = (input("Enter the Number here"))
-                    speak("now enter the message you want to send")
-                    msg = input("Enter the message here")
-                    kit.sendwhatmsg_instantly(number, msg)
-                elif "tell me a joke" in query:
-                    def joke():
-                        headers = {'Accept': 'application/json'}
-                        res = requests.get("https://icanhazdadjoke.com/", headers=headers).json()
-                        return res["joke"]
+                    try:
+                        speak("What do you want to play on youtube?")
+                        req = take_user_cmd().lower()
+                        kit.playonyt(req)
+                    except:
+                        speak("Unknown error occurred")                        
 
-                    jokee = joke()
-                    speak(jokee)
-                    print(jokee)
-                elif "give me an advice" in query:
-                    def advice():
-                        res = requests.get("https://api.adviceslip.com/advice").json()
-                        return res["slip"]["advice"]
+                elif "date" in query:
+                    try:
+                        speak(datetime.date.today())
+                    except:
+                        speak("Unknown error occurred")
 
-                    advicee = advice()
-                    speak(advicee)
-                    print(advicee)
-                # elif "send an email" in query:
-                #     li = ["xxxxx@gmail.com", "yyyyy@gmail.com"]
-                #     for dest in li:
-                #         s = smtplib.SMTP('smtp.gmail.com', 587)
-                #         s.starttls()
-                #         s.login("sender_email_id", "sender_email_id_password")
-                #         message = "Message_you_need_to_send"
-                #         s.sendmail("sender_email_id", dest, message)
-                #         s.quit()
+                elif "time" in query:
+                    try:
+                       speak(time.strftime("%H:%M:%S", time.localtime()))
+                    except:
+                        speak("Unknown error occurred")
 
+                elif "file explorer" in query:
+                    try:
+                        speak("opening file explorer")
+                        run("file explorer")
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "calculater" in query:
+                    try:
+                        speak("opening calculater")
+                        run("calculator")
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "camera" in query:
+                    try:
+                        speak("opening camera")
+                        run("camera")
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "settings" in query:
+                    try:
+                        speak("opening settings")
+                        run("settings")
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "vlc" in query:
+                    try:
+                        speak("opening vlc")
+                        run("vlc media player")
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "chrome" in query:
+                    try:
+                        speak("opening chrome")
+                        run("google chrome")
+                    except:
+                            speak("Unknown error occurred")
+
+                elif "message" in query:
+                    try:
+                        speak(
+                            "Sure, please type the number with the country code to whom I have to message")
+                        number = (input("Enter the Number here"))
+                        speak("now enter the message you want to send")
+                        msg = input("Enter the message here")
+                        kit.sendwhatmsg_instantly(number, msg)
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "joke" in query:
+                    try:
+                        def joke():
+                            headers = {'Accept': 'application/json'}
+                            res = requests.get(
+                                "https://icanhazdadjoke.com/", headers=headers).json()
+                            return res["joke"]
+
+                        jokee = joke()
+                        speak(jokee)
+                        print(jokee)
+                    except:
+                        speak("Unknown error occurred")
+
+                elif "advice" in query:
+                    try:
+                        def advice():
+                            res = requests.get(
+                                "https://api.adviceslip.com/advice").json()
+                            return res["slip"]["advice"]
+
+                        advicee = advice()
+                        speak(advicee)
+                        print(advicee)
+                    except:
+                        speak("Unknown error occurred")
+
+                elif " email" in query:
+                    try:
+                        senderEmailId = input("Plese type your email address  ")
+                        senderPassword = input("Plese type the password  ")
+                        reciver = input("Enter recivers email address  ")
+                        li = [senderEmailId, reciver]
+                        for dest in li:
+                            s = smtplib.SMTP('smtp.gmail.com', 587)
+                            s.starttls()
+                            s.login(senderEmailId, senderPassword)
+                            message = "Message_you_need_to_send"
+                            s.sendmail("sender_email_id", dest, message)
+                            s.quit()
+                    except:
+                        speak("Unknown error occurred")
 
                 else:
-                    speak("sorry, that is currently out of my reach")
+                    try:
+                        speak("I found this on the web")
+                        wikipedia.summary(query , sentences = 5)
+
+                    except:
+                        num_page = 3
+                        search_results = google.search(query, num_page)
+                        for result in search_results:
+                            print(result.description)
+                            speak(result.description)
 
     robot()
+
     while True:
         speak("Would you like to run this tool again? \n")
 
@@ -157,3 +242,14 @@ def main():
 
 
 main()
+
+while True:
+    wouldYouLikeToStartAgain = input(
+        "Would you like to run this tool again y/n ? \n")
+    if wouldYouLikeToStartAgain == "y" or wouldYouLikeToStartAgain == "Y" or wouldYouLikeToStartAgain == "Yes" or wouldYouLikeToStartAgain == "Yep" or wouldYouLikeToStartAgain == "yes" or wouldYouLikeToStartAgain == "yep" or wouldYouLikeToStartAgain == "sure":
+        main()
+    elif wouldYouLikeToStartAgain == "n" or wouldYouLikeToStartAgain == "N" or wouldYouLikeToStartAgain == "No" or wouldYouLikeToStartAgain == "Nope" or wouldYouLikeToStartAgain == "yes" or wouldYouLikeToStartAgain == "nope" or wouldYouLikeToStartAgain == "nah" or wouldYouLikeToStartAgain == "Nah":
+        print("Cool thanks for using the programme")
+        break
+    else:
+        print("That maybe beyond my abilities at the moment")
