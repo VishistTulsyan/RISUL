@@ -37,6 +37,11 @@ An ai bot to make things easier
     <li>pip install requests</li>
     <li>pip install smtplib</li>
   </ul>
+  Now download the file
+  <a href="https://github.com/Vishistt/RISUL-AN-AI-BOT/archive/refs/heads/main.zip>By clicking here</a>
+  <br>
+  Done now Enjoy:)
+
   
   
   
