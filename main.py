@@ -1,4 +1,4 @@
-def main():  # I know main function isnt required in py
+def main():  # I know main function isn't required in py
     import pyttsx3
     import speech_recognition as sr
     import datetime
@@ -7,9 +7,8 @@ def main():  # I know main function isnt required in py
     import time
     import requests
     import smtplib
-    import webbrowser
-    from google import google
     import wikipedia
+    import googlesearch
 
     engine = pyttsx3.init()
     engine.setProperty('rate', 150)
@@ -20,7 +19,7 @@ def main():  # I know main function isnt required in py
         engine.say(audio)
         engine.runAndWait()
 
-    speak("Hello I am Risul an AI powered virtual assistent, to get started, please type your name")
+    speak("Hello I am Risul an AI powered virtual assistant, to get started, please type your name")
     user = input("type your name")
 
     def greet_user():
@@ -43,7 +42,7 @@ def main():  # I know main function isnt required in py
             query = r.recognize_google(audio, language='en-in')
             print(f"User said: {query}\n")
         except Exception:
-            print("Sorry, I didn't get that, I'd appricate if you could try again  ")
+            print("Sorry, I didn't get that, I'd appreciate if you could try again  ")
             query = "NONE"
         return query
 
@@ -74,7 +73,7 @@ def main():  # I know main function isnt required in py
                         speak("opening word")
                         run("word")
                     except:
-                        speak("Unknown error occurred")                        
+                        speak("Unknown error occurred")
 
                 elif "whatsapp" in query:
                     try:
@@ -88,7 +87,7 @@ def main():  # I know main function isnt required in py
                         speak("opening netflix")
                         run("Netflix")
                     except:
-                        speak("Unknown error occurred")                      
+                        speak("Unknown error occurred")
 
 
                 elif "play on youtube" in query:
@@ -97,7 +96,7 @@ def main():  # I know main function isnt required in py
                         req = take_user_cmd().lower()
                         kit.playonyt(req)
                     except:
-                        speak("Unknown error occurred")                        
+                        speak("Unknown error occurred")
 
                 elif "date" in query:
                     try:
@@ -107,7 +106,7 @@ def main():  # I know main function isnt required in py
 
                 elif "time" in query:
                     try:
-                       speak(time.strftime("%H:%M:%S", time.localtime()))
+                        speak(time.strftime("%H:%M:%S", time.localtime()))
                     except:
                         speak("Unknown error occurred")
 
@@ -151,7 +150,7 @@ def main():  # I know main function isnt required in py
                         speak("opening chrome")
                         run("google chrome")
                     except:
-                            speak("Unknown error occurred")
+                        speak("Unknown error occurred")
 
                 elif "message" in query:
                     try:
@@ -193,16 +192,16 @@ def main():  # I know main function isnt required in py
 
                 elif " email" in query:
                     try:
-                        senderEmailId = input("Plese type your email address  ")
-                        senderPassword = input("Plese type the password  ")
-                        reciver = input("Enter recivers email address  ")
-                        li = [senderEmailId, reciver]
-                        for dest in li:
+                        senderEmailId = input("Please type your email address  ")
+                        senderPassword = input("Please type the password  ")
+                        receiver = input("Enter receivers email address  ")
+                        li = [senderEmailId, receiver]
+                        for des in li:
                             s = smtplib.SMTP('smtp.gmail.com', 587)
                             s.starttls()
                             s.login(senderEmailId, senderPassword)
                             message = "Message_you_need_to_send"
-                            s.sendmail("sender_email_id", dest, message)
+                            s.sendmail("sender_email_id", des, message)
                             s.quit()
                     except:
                         speak("Unknown error occurred")
@@ -210,11 +209,11 @@ def main():  # I know main function isnt required in py
                 else:
                     try:
                         speak("I found this on the web")
-                        wikipedia.summary(query , sentences = 5)
+                        wikipedia.summary(query, sentences=5)
 
                     except:
-                        num_page = 3
-                        search_results = google.search(query, num_page)
+                        num_page = str(3)
+                        search_results = googlesearch.search(query, num_page)
                         for result in search_results:
                             print(result.description)
                             speak(result.description)
@@ -242,14 +241,3 @@ def main():  # I know main function isnt required in py
 
 
 main()
-
-while True:
-    wouldYouLikeToStartAgain = input(
-        "Would you like to run this tool again y/n ? \n")
-    if wouldYouLikeToStartAgain == "y" or wouldYouLikeToStartAgain == "Y" or wouldYouLikeToStartAgain == "Yes" or wouldYouLikeToStartAgain == "Yep" or wouldYouLikeToStartAgain == "yes" or wouldYouLikeToStartAgain == "yep" or wouldYouLikeToStartAgain == "sure":
-        main()
-    elif wouldYouLikeToStartAgain == "n" or wouldYouLikeToStartAgain == "N" or wouldYouLikeToStartAgain == "No" or wouldYouLikeToStartAgain == "Nope" or wouldYouLikeToStartAgain == "yes" or wouldYouLikeToStartAgain == "nope" or wouldYouLikeToStartAgain == "nah" or wouldYouLikeToStartAgain == "Nah":
-        print("Cool thanks for using the programme")
-        break
-    else:
-        print("That maybe beyond my abilities at the moment")
