@@ -25,7 +25,7 @@ An ai bot to make things easier
   </ul>
   
 ## How can you use this bot?
-  The very first thing you would need is python itself
+  The very first thing you would need is python itself,<br>
   Then you would need to go to your command prompt and install the following modules(Just copy and paste them)
   <ul>
     <li>pip install pyttsx3</li>
