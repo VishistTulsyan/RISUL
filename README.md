@@ -22,7 +22,19 @@ An ai bot to make things easier
   <li>Give you an advice</li>
   <li>Send someone a message through whatsapp</li>
   <li>Send an email to someone</li>
-  
+## How can you use this bot?
+  The very first thing you would need is python itself
+  Then you would need to go to your command prompt and install the following modules(Just copy and paste them)
+  <ul>
+    <li>pip install pyttsx3</li>
+    <li>pip install speech_recognition</li>
+    <li>pip install datetime</li>
+    <li>pip install pywhatkit</li>
+    <li>pip install AppOpener</li> 
+    <li>pip install time</li>
+    <li>pip install requests</li>
+    <li>pip install smtplib</li>
+  </ul>
   
   
   
