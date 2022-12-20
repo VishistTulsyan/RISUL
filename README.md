@@ -1,6 +1,6 @@
 # RISUL-AN-AI-BOT
 An ai bot to make things easier
-##What can this bot do?
+## What can this bot do?
 <ul>
   <li>Open the following app
     <ul>
